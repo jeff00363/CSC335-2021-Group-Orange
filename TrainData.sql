@@ -1,7 +1,8 @@
-CREATE DATABASE [IF NOT EXISTS] railway_data;
+CREATE DATABASE railway_data;
     
 USE railway_data;
-    CREATE TABLE passenger (
+
+    CREATE TABLE passengers (
         passenger_id INT NOT NULL AUTO_INCREMENT,
         fullname varchar(25) NOT NULL,
         username VARCHAR(50) NOT NULL UNIQUE,
@@ -9,7 +10,7 @@ USE railway_data;
         phoneNumber INT NOT NULL,
         email varchar(50) NOT NULL,
         gender varchar(10) NOT NULL,
-        PRIMARY KEY (passenger_id,username)
+        PRIMARY KEY (passenger_id,fullname)
     );
 
     CREATE TABLE train (
