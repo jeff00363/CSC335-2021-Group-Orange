@@ -10,8 +10,8 @@ USE railway_data;
         phoneNumber INT NOT NULL,
         email varchar(50) NOT NULL,
         gender varchar(10) NOT NULL,
-        PRIMARY KEY (passenger_id,fullname)
-    );
+        PRIMARY KEY (passenger_id,fullname),
+        );
 
     CREATE TABLE train (
         train_id INT NOT NULL AUTO_INCREMENT,
@@ -24,8 +24,8 @@ USE railway_data;
         number_stops INT NOT NULL,
         train_capacity INT NOT NULL,
         depature_track INT NOT NULL,
-        PRIMARY KEY (train_id,depature_station)
-    );
+        PRIMARY KEY (train_id,depature_station),
+        );
 
     CREATE TABLE ticket (
         ticket_id INT NOT NULL AUTO_INCREMENT,
