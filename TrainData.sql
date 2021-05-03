@@ -60,30 +60,21 @@ USE railway_data;
         FOREIGN KEY (passenger_id) REFERENCES passenger,
         );
 
-    CREATE TABLE ticketNormal2.0 (
-        ticket_id INT NOT NULL AUTO_INCREMENT,
-        tracker_number INT NOT NULL,
-        ticket_class VARCHAR(25) NOT NULL,
-        price INT NOT NULL,
-        trip_date INT NOT NULL,
+    CREATE TABLE ticketNormal2point0 (
         passenger_id INT NOT NULL,
         train_id INT NOT NULL,
-        PRIMARY KEY (ticket_id)
+        tracker_number INT NOT NULL,
+        price INT NOT NULL,
+        PRIMARY KEY (tracker_number)
         FOREIGN KEY (train_id) REFERENCES train,
         FOREIGN KEY (passenger_id) REFERENCES passenger,
         );
 
-    CREATE TABLE ticketNormal2.5 (
+    CREATE TABLE ticketNormal2point5 (
         ticket_id INT NOT NULL AUTO_INCREMENT,
-        tracker_number INT NOT NULL,
         ticket_class VARCHAR(25) NOT NULL,
-        price INT NOT NULL,
         trip_date INT NOT NULL,
-        passenger_id INT NOT NULL,
-        train_id INT NOT NULL,
         PRIMARY KEY (ticket_id)
-        FOREIGN KEY (train_id) REFERENCES train,
-        FOREIGN KEY (passenger_id) REFERENCES passenger,
         );
 
     CREATE TABLE station (
