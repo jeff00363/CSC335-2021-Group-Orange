@@ -78,7 +78,7 @@ USE railway_data;
         );
 
     CREATE TABLE station (
-        ticket_id INT NOT NULL AUTO_INCREMENT,
+        station_id INT NOT NULL AUTO_INCREMENT,
         train_id INT NOT NULL,
         city VARCHAR(25) NOT NULL,
         state_us VARCHAR(25) NOT NULL,
