@@ -31,7 +31,7 @@ USE railway_data;
         ticket_id INT NOT NULL AUTO_INCREMENT,
         passenger_id INT NOT NULL,
         train_id INT NOT NULL,
-        ticket_class VARCHAR(25) NOT NULL UNIQUE,
+        ticket_class VARCHAR(25) NOT NULL,
         price INT NOT NULL,
         trip_date INT NOT NULL,
         tracker_number INT NOT NULL,
@@ -43,8 +43,8 @@ USE railway_data;
     CREATE TABLE station (
         ticket_id INT NOT NULL AUTO_INCREMENT,
         train_id INT NOT NULL,
-        city VARCHAR(25) NOT NULL UNIQUE,
-        state_us VARCHAR(25) NOT NULL UNIQUE,
+        city VARCHAR(25) NOT NULL,
+        state_us VARCHAR(25) NOT NULL,
         num_tracks INT NOT NULL,
         PRIMARY KEY (station_id)
         FOREIGN KEY (train_id) REFERENCES train,
