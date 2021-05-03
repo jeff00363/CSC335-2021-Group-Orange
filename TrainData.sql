@@ -77,18 +77,55 @@ USE railway_data;
         PRIMARY KEY (ticket_id, ticket_class)
         );
 
-
-
-    CREATE TABLE ticketNormal3point1 (
- 
-    );
-
     CREATE TABLE station (
         ticket_id INT NOT NULL AUTO_INCREMENT,
         train_id INT NOT NULL,
         city VARCHAR(25) NOT NULL,
         state_us VARCHAR(25) NOT NULL,
         num_tracks INT NOT NULL,
+        PRIMARY KEY (station_id)
+        FOREIGN KEY (train_id) REFERENCES train,
+        );
+-- Normal forums for Station
+    CREATE TABLE stationNormal1 (
+        station_id INT NOT NULL AUTO_INCREMENT,
+        city VARCHAR(25) NOT NULL,
+        state_us VARCHAR(25) NOT NULL,
+        num_tracks INT NOT NULL,
+        train_id INT NOT NULL,
+        PRIMARY KEY (station_id)
+        FOREIGN KEY (train_id) REFERENCES train,
+        );
+
+    CREATE TABLE stationNormal2point1 (
+        station_id INT NOT NULL AUTO_INCREMENT,
+        city VARCHAR(25) NOT NULL,
+        train_id INT NOT NULL,
+        PRIMARY KEY (station_id)
+        FOREIGN KEY (train_id) REFERENCES train,
+        );
+        
+    CREATE TABLE stationNormal2point2 (
+        station_id INT NOT NULL AUTO_INCREMENT,
+        state_us VARCHAR(25) NOT NULL,
+        num_tracks INT NOT NULL,
+        PRIMARY KEY (station_id)
+        );
+    
+    CREATE TABLE stationNormal3point1 (
+        station_id INT NOT NULL AUTO_INCREMENT,
+        state_us VARCHAR(25) NOT NULL,
+        PRIMARY KEY (station_id)
+        );
+    CREATE TABLE stationNormal3point2 (
+        station_id INT NOT NULL AUTO_INCREMENT,
+        num_tracks INT NOT NULL,
+        PRIMARY KEY (station_id)
+        );
+    CREATE TABLE stationNormal3point3 (
+        station_id INT NOT NULL AUTO_INCREMENT,
+        city VARCHAR(25) NOT NULL,
+        train_id INT NOT NULL,
         PRIMARY KEY (station_id)
         FOREIGN KEY (train_id) REFERENCES train,
         );
