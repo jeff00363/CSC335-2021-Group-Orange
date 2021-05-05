@@ -25,7 +25,7 @@ else
 
             <head>
 
-                <title>CART</title>
+                <title>Orders</title>
 
             </head>
 
