@@ -1,6 +1,6 @@
 <?php
 
-$ipAddress= "00.000.00.000";
+$ipAddress= "127.0.0.1";
 $user = "user"   ;
 $pass =  "123456"   ;
 
