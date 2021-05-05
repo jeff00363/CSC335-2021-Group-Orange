@@ -41,7 +41,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     else
     {
         //searches the sql databased for an id where username is not used
-        $sql= "SELECT userid FROM usersv2 WHERE username = '$username'";
+        $sql= "SELECT userid FROM userLogin WHERE username = '$username'";
 
             //launcges the stmt command which prepares statements for the SQL server
             if($stmt = mysqli_prepare($link, $sql))
@@ -110,7 +110,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     }
 
     //pushes the data to the database
-    $sql = "INSERT INTO usersv2 (username,pass,phoneNumber) VALUES ('$username','$password','$utype')";
+    $sql = "INSERT INTO userLogin (username,pass,phoneNumber) VALUES ('$username','$password','$utype')";
 
     //closes tthe sql connection
     mysqli_close($link);
