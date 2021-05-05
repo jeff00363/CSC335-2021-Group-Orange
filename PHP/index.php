@@ -16,6 +16,7 @@
   <div>
      <button onclick="parent.location='login.php'"> Login </button>
      <button onclick="parent.location='signup.php'"> Signup </button>
+     <button onclick="parent.location='addresses.php'"> Address Book </button>
   </div>
 
     <div>
