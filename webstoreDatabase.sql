@@ -14,6 +14,7 @@ USE retail_webstore;
     CREATE TABLE addressBook(
 
         addressid INT NOT NULL AUTO_INCREMENT,
+        houseNumber INT NOT NULL,
         streetname CHAR(50) NOT NULL,
         town CHAR(20) NOT NULL,
         zipcode INT NOT NULL,
