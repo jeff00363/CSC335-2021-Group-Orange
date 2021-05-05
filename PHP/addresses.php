@@ -38,9 +38,9 @@ else
                         <tr>
                             <td> <a>AddressID: </a> </td>
                             <td> <a>House Number: </a> </td>
-                            <td> <a>Street Name": </a> </td>
-                            <td> <a>Invetory IDs: </a> </td>
-                            <td> <a>Purchaser:</a> </td>
+                            <td> <a>Street Name: </a> </td>
+                            <td> <a>Town: </a> </td>
+                            <td> <a>Zipcode: </a> </td>
 
                         </tr>
 
