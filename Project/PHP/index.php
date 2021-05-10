@@ -1,3 +1,11 @@
+<?php
+include 'db/connect_to_db.php';
+
+$db_name = 'retail_webstore';
+
+$conn = get_db_connection($db_name);
+?>
+
 <html>
 <head>
 <style>
@@ -26,8 +34,8 @@
     <div>
     
     <div>
-     <button onclick="parent.location='orders.php'"> View Cart </button>
-     <button onclick="parent.location='car.php'"> Orders </button>
+     <button onclick="parent.location='cart.php'"> View Cart </button>
+     <button onclick="parent.location='orders.php'"> Orders </button>
   </div>
 
     <div>

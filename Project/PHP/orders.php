@@ -1,22 +1,10 @@
 <?php
 
-$ipAddress= "127.0.0.1";
-$user = "user"   ;
-$pass =  "123456"   ;
+    include '../db/connect_to_db.php';
 
-//starts the connection o mysql
-//will display error in browser if it cants connect
-$link = mysqli_connect($ipAddress,$user,$pass);
+    $db_name = 'retail_webstore';
 
-
-//Sets the if to end connection if there an error
-if ($link == false) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-else
-{
-    echo "Connected successfully";
-}
+    $conn = get_db_connection($db_name);
 ?>
 
 <!DOCTYPE html>

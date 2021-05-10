@@ -1,22 +1,11 @@
 <?php
 
-$ipAddress= "127.0.0.1";
-$user = "user"   ;
-$pass =  "123456"   ;
 
-//starts the connection o mysql
-//will display error in browser if it cants connect
-$link = mysqli_connect($ipAddress,$user,$pass);
+include 'db/connect_to_db.php';
 
+$db_name = 'retail_webstore';
 
-//Sets the if to end connection if there an error
-if ($link == false) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-else
-{
-    echo "Connected successfully";
-}
+$conn = get_db_connection($db_name);
 
 //sets the varibales up
 $username = "";
@@ -30,13 +19,10 @@ $typeError = "";
 //Checks for a username registration
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
-
     if(empty(trim($_POST["username"])))
     {
-
         //wants user to enter a username
         $usernameError = "Enter Username";
-
     }
     else
     {
@@ -44,7 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         $sql= "SELECT userid FROM userLogin WHERE username = '$username'";
 
             //launcges the stmt command which prepares statements for the SQL server
-            if($stmt = mysqli_prepare($link, $sql))
+            if($stmt = mysqli_prepare($conn, $sql))
             {
                 //forces the username to be entered .its a mandatory value
                 mysqli_stmt_bind_param($stmt,"s",$param_username);
@@ -67,10 +53,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             }
             //closes the stmt instance to prevent data damage
         mysqli_stmt_close($stmt);
-
-
-
-
     }
     //starts checking to add a password. no comparisons are done
     //this is as password can not interfere with other users data
@@ -83,42 +65,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
         }
     else
-
         //data is trimmed to remove white space then added to the database
         {
-
             $password = trim($_POST["password"]);
-
         }
-
     if(empty(trim($_POST["type"])))
     {
-
         //does a error catch to make sure its entered. its a blank forum
         //at this point
         $typeError = "Enter Type";
-
     }
     else
-
         //data is trimmed to remove white space then added to the database
     {
 
         $utype = trim($_POST["usertype"]);
-
-
     }
-
-    //pushes the data to the database
-    $sql = "INSERT INTO userLogin (username,pass,phoneNumber) VALUES ('$username','$password','$utype')";
-
-    //closes tthe sql connection
-    mysqli_close($link);
+    $conn->close();
 }
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
+
+<html>
 
 
 <head>
@@ -134,38 +102,48 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
 <div class="regBOX">
 
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" >
+    <form action="welcome.php" method="post">
+        <!--<div <?php //echo (!empty($usernameError)) ? 'error' : ''; ?>>-->
 
-        <div class="typebox">
+            <label> Username:  </label>
+            <input id= "username" type="text" name="username" size="16" <?php //echo $username; ?>> <br> <br>
 
-            <div <?php echo (!empty($usernameError)) ? 'error' : ''; ?>>
+        <!--</div>-->
+<!--
+        <div <?php //echo (!empty($passwordError)) ? 'error' : ''; ?>>-->
 
-                <label> Username:  </label>
-                <input id= "username" type="username" name="username" size="16" <?php echo $username; ?>> <br> <br>
+            <label> Password: </label>
+            <input id= "password" type="password" name="pass_field" size="16" <?php //echo $password; ?>> <br> <br>
 
-            </div>
+        <!--</div>-->
 
-            <div <?php echo (!empty($passwordError)) ? 'error' : ''; ?>>
+        <!--<div <?php //echo (!empty($typeError)) ? 'error' : ''; ?>>-->
 
-                <label> Password: </label>
-                <input id= "password" type="password" name="password" size="16" <?php echo $password; ?>> <br> <br>
+            <label> Phone: </label>
+            <input id= "phone" type="tel" name="phone" size="16" <?php //echo $utype; ?>> <br> <br>
 
-            </div >
-
-            <div <?php echo (!empty($typeError)) ? 'error' : ''; ?>>
-
-                <label> Phone: </label>
-                <input id= "usertype" type="usertype" name="type" size="16" <?php echo $utype; ?>> <br> <br>
-
-            </div>
-
-        </div>
-
-        <input id=signupbutton type="button"  value = 'Sign Up'>
-
-
+        <!--</div>-->
+        
+        <input id=signupbutton type="submit" value = 'Sign Up'>
     </form>
 
+    <!--<form action="welcome.php" method="post">
+        
+        <span style = 'position:fixed; left: 100px;top: 200px;'> 
+            Name: <input type="text" name="user_name">
+            <br>
+        </span>
+        
+        <input type="password" name = "pass_field">
+
+        <span style = 'position:fixed; left: 100px;;top: 250px;'> 
+            Phone Number: <input type="text" name="email"><br>
+        </span>
+        
+        <span style = 'position:fixed; left: 100px;;top: 280px;'> 
+            <input type="submit">
+        </span>
+    </form>-->
 
 
 </div>
